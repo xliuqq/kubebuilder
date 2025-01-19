@@ -17,7 +17,7 @@ limitations under the License.
 package templates
 
 import (
-	"sigs.k8s.io/kubebuilder/v3/pkg/machinery"
+	"sigs.k8s.io/kubebuilder/v4/pkg/machinery"
 )
 
 var _ machinery.Template = &GitIgnore{}
@@ -27,7 +27,7 @@ type GitIgnore struct {
 	machinery.TemplateMixin
 }
 
-// SetTemplateDefaults implements file.Template
+// SetTemplateDefaults implements machinery.Template
 func (f *GitIgnore) SetTemplateDefaults() error {
 	if f.Path == "" {
 		f.Path = ".gitignore"
@@ -38,8 +38,7 @@ func (f *GitIgnore) SetTemplateDefaults() error {
 	return nil
 }
 
-const gitignoreTemplate = `
-# Binaries for programs and plugins
+const gitignoreTemplate = `# Binaries for programs and plugins
 *.exe
 *.exe~
 *.dll
